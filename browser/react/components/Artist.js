@@ -39,13 +39,14 @@ export default class Artist extends React.Component {
     const selectedArtist = this.artist;
     const children = this.props.children;
     const propsToPassToChildren = this.props;
+    Object.assign({songs: this.songs, albums: this.albums}, propsToPassToChildren);
 
     return (
       <div>
         <h3>{selectedArtist.name}</h3>
         <ul className="nav nav-tabs">
-          <li><Link to={ this.props.location.pathname + "/albums"}>ALBUMS</Link></li>
-          <li><Link to={"/songs"}>SONGS</Link></li>
+          <li><Link to={`/Artist/${this.artistId}/albums`}>ALBUMS</Link></li>
+          <li><Link to={`/Artist/${this.artistId}/songs`}>SONGS</Link></li>
         </ul>
         {children && React.cloneElement(children, propsToPassToChildren)}
       </div>
