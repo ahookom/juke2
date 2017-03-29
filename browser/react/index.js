@@ -4,6 +4,8 @@ import AppContainer from './containers/AppContainer';
 import { Router, Route, hashHistory, IndexRedirect } from 'react-router';
 import Albums from './components/Albums';
 import Album from './components/Album';
+import Artists from './components/Artists';
+import Artist from './components/Artist';
 
 
 ReactDOM.render(
@@ -12,6 +14,8 @@ ReactDOM.render(
       <Route path="/" component={AppContainer}>
         <Route path="/Albums" component={Albums} />
         <Route path="/Album/:albumId" component={Album} />
+        <Route path="/Artists" component={Artists} />
+        <Route path="/Artist/:artistId" component={Artist} />
         <IndexRedirect to="/Albums" />
       </Route>
     </Router>
