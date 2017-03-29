@@ -9,7 +9,7 @@ import Album from '../components/Album';
 import Sidebar from '../components/Sidebar';
 import Player from '../components/Player';
 
-import { convertAlbum, convertAlbums, skip } from '../utils';
+import { convertAlbum, convertAlbums, skip, convertSong } from '../utils';
 
 export default class AppContainer extends Component {
 
@@ -57,6 +57,7 @@ export default class AppContainer extends Component {
   }
 
   load(currentSong, currentSongList) {
+    currentSong = currentSong.audioUrl ? currentSong : convertSong(currentSong);
     AUDIO.src = currentSong.audioUrl;
     AUDIO.load();
     this.setState({

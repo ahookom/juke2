@@ -16,7 +16,7 @@ export default class Artists extends React.Component {
             return (
               <div className="list-group-item" key={artist.id}>
                 {/* determine where to actually Link to later! */}
-                <Link to={`/artist/${artist.id}`}>{artist.name}</Link>
+                <Link to={`/Artist/${artist.id}`}>{artist.name}</Link>
               </div>
             )
           })
