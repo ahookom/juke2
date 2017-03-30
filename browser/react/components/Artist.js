@@ -8,10 +8,11 @@ import { convertAlbum, convertAlbums, skip } from '../utils';
 export default class Artist extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props);
     this.artistId = +this.props.routeParams.artistId;
-    this.albums = [];
-    this.songs = [];
+    this.state = {
+      albums: [],
+      songs: []
+    }
     this.artist = this.props.artists.filter(function (artist) {
       return artist.id === this.artistId
     }, this)[0];
@@ -38,8 +39,13 @@ export default class Artist extends React.Component {
   render() {
     const selectedArtist = this.artist;
     const children = this.props.children;
-    const propsToPassToChildren = this.props;
-    Object.assign({songs: this.songs, albums: this.albums}, propsToPassToChildren);
+    const propsToPassToChildren = {
+      songs: this.songs,
+      albums: this.albums,
+      currentSong: this.props.currentSong,
+      isPlaying: this.props.isPlaying,
+      toggleOne: this.props.toggleOne
+    }
 
     return (
       <div>
